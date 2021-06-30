@@ -45,6 +45,9 @@ document.addEventListener('DOMContentLoaded', function () {
     joinBtn.addEventListener('click', function(e){
         const inputRoom = document.getElementById('input-room');
         const room = inputRoom.value;
+        socket.emit('join-room', room, message => {
+            displayMessage(message)
+        })
     })
 
 })

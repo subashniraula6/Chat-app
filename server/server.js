@@ -12,4 +12,8 @@ io.on('connection', socket => {
             socket.to(room).emit('receive-message', message)
         }
     })
+    socket.on('join-room', (room, cb) => {
+        socket.join(room);
+        cb('Joined room: ' + room)
+    })
 })
