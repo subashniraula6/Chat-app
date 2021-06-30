@@ -1,24 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat App</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        .message-container {
+            height: 600px;
+            width: 80vw;
+            border: 2px solid black;
+            margin: auto;
+            overflow-y: scroll;
+        }
+
+        #form {
+            margin: 20px auto;
+            width: 80vw;
+        }
+        .form-controller {
+           margin: 20px 0;
+           font-size: 1.5rem;
+           display: flex;
+           justify-content: space-between;
+        }
+        #input-message, #input-room {
+            width: calc(80vw - 200px);
+            height: 30px;
+            margin: 0 10px;
+            font-size: 1rem;
+            color: rgb(43, 37, 37);
+            padding: 5px;
+        }        
+       #btn-send-message, #btn-join-room {
+           width: 100px;
+           height: 30px;
+           font-size: 1.2rem;
+       } 
+       label {
+           width: 100px;
+       }
+       
+    </style>
 </head>
+
 <body>
     <div class="message-container"></div>
     <form id="form">
         <div class="form-controller">
             <label for="message">Message</label>
-            <input type="text" id="message">
-            <button id="send-message">Send</button>
+            <input type="text" id="input-message">
+            <button id="btn-send-message">Send</button>
         </div>
         <div class="form-controller">
             <label for="room">Room</label>
-            <input type="text" id="room">
-            <button id="join-room">Join</button>
+            <input type="text" id="input-room">
+            <button id="btn-join-room">Join</button>
         </div>
     </form>
 </body>
+
 </html>
