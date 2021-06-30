@@ -1,13 +1,16 @@
-document.addEventListener('DOMContentLoaded', function () {
+import { io } from 'socket.io-client'
 
+document.addEventListener('DOMContentLoaded', function () {
+    
     const messageBox = document.getElementsByClassName('message-container')[0];
     const messageBtn = document.getElementById('btn-send-message');
     const joinBtn = document.getElementById('btn-join-room')
 
+    const socket = io('http://localhost:3000')
+
     function displayMessage(message) {
         const div = document.createElement('div');
         div.textContent = message;
-        div.style = 'font-size: 1.2rem; color: navy; margin: 5px; padding: 5px; background-color: #f7f7f7f7';
         messageBox.append(div)
     }
 

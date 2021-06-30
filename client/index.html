@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat App</title>
-    <script src="./script.js"></script>
+    <script type="module" src="./script.js"></script>
     <style>
         * {
             box-sizing: border-box;
@@ -20,6 +20,14 @@
             border: 2px solid black;
             margin: auto;
             overflow-y: scroll;
+        }
+
+        .message-container > * {
+            font-size: 1.2rem; 
+            color: navy; 
+            margin: 5px; 
+            padding: 5px; 
+            background-color: #f7f7f7f7;
         }
 
         #form {
