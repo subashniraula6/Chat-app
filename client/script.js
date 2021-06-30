@@ -1,4 +1,5 @@
-import { io } from 'socket.io-client'
+import openSocket from 'socket.io-client'
+// or //import { io } from 'socket.io-client'
 
 document.addEventListener('DOMContentLoaded', function () {
     
@@ -6,11 +7,21 @@ document.addEventListener('DOMContentLoaded', function () {
     const messageBtn = document.getElementById('btn-send-message');
     const joinBtn = document.getElementById('btn-join-room')
 
-    const socket = io('http://localhost:3000')
+    //socket
+    const socket = openSocket('http://localhost:3000')
 
-    function displayMessage(message) {
+    socket.on('connect', () => {
+        displayMessage('You are connected with id: ' + socket.id)
+    })
+
+    socket.on('receive-message', message => {
+        displayMessage(message, 'receive')
+    })
+
+    function displayMessage(message, type) {
         const div = document.createElement('div');
         div.textContent = message;
+        div.style = (type === 'receive') ? 'background-color: #f7f7f7f7; text-align: end': null;
         messageBox.append(div)
     }
 
@@ -25,6 +36,8 @@ document.addEventListener('DOMContentLoaded', function () {
         
         if (message === '') return
         displayMessage(message)
+
+        socket.emit('send-message', message, room)
 
         inputMessage.value = ''
     })
